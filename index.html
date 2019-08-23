@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="index.css" type="text/css" />
+  <title>NPS Parks Assignment</title>
+</head>
+<body>
+    <main>
+        <h1>National Park Locator</h1>
+        <p>Search for parks in one or more states!</p>
+        <form id="park-search">
+            <section id="state-name">
+                <label for="state-name-input">Enter the state name (2 letter state code only!): </label>
+                <input type="text" placeholder="CA" maxlength="2" />
+            </section>
+            <section id="results-amount">
+                <label for="results-amount-input">Enter the maximum number of results you want:</label>
+                <input type="number" value="10" min="1" />
+            </section>
+            <section id="submit-button">
+                <button type="submit">Submit!</button>
+            </section>
+        </form>
+
+        <h2>Results</h2>
+        <section id="results">
+
+        </section>
+    </main>
+  
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
