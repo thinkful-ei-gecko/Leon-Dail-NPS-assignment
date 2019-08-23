@@ -22,10 +22,11 @@ function populateItems(name, description, url,i) {
  * @param {*} max - max number of parks to display, 10 being the default.
  */
 function displayResults(response,state,max=10) {
-  $('#displayH2').text(`Results: showing ${max} parks for ${state}`);
   $('#listOfParks').empty();
   console.log(response.data);
-  for (let i=0; i<max;i++) {
+  let totalDisplay = max>response.data.length ? response.data.length : max;
+  $('#displayH2').text(`Results: showing ${totalDisplay} parks for ${state}`);
+  for (let i=0; i<totalDisplay;i++) {
     let name = response.data[i].fullName;
     let description = response.data[i].description;
     let url = response.data[i].url;
