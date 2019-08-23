@@ -14,20 +14,22 @@
         <form id="park-search">
             <section id="state-name">
                 <label for="state-name-input">Enter the state name (2 letter state code only!): </label>
-                <input type="text" placeholder="CA" maxlength="2" />
+                <input type="text" placeholder="CA" maxlength="2" id="state-name-input" />
             </section>
             <section id="results-amount">
                 <label for="results-amount-input">Enter the maximum number of results you want:</label>
-                <input type="number" value="10" min="1" />
+                <input type="number" value="10" min="1" id="results-amount-input" />
             </section>
             <section id="submit-button">
                 <button type="submit">Submit!</button>
             </section>
         </form>
 
-        <h2>Results</h2>
         <section id="results">
+          <h2 id="displayH2">Results</h2>
+          <ul id="listOfParks">
 
+          </ul>
         </section>
     </main>
   
