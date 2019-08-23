@@ -1,13 +1,26 @@
 'use strict';
 
-function populateItems(name, description, url) {
+/**
+ * Called every time we display a new park. This displays the name, description, and URL of each park.
+ * @param {string} name - name of the park
+ * @param {string} description  - description of the park
+ * @param {string} url - url of the park's website
+ * @param {number} i - the number of park we're currently on
+ */
+function populateItems(name, description, url,i) {
   $('#listOfParks').append(`
-    <h3>${name}</h3>
+    <h3>#${i}: ${name}</h3>
     <p>Description: ${description}</p>
     <p>URL: ${url}</p>
   `);
 }
 
+/**
+ * Clears out the old data and calls for the new data to be inserted into the HTML. 
+ * @param {object} response - NPS's JSON response to my API call
+ * @param {*} state - the state we display parks from
+ * @param {*} max - max number of parks to display, 10 being the default.
+ */
 function displayResults(response,state,max=10) {
   $('#displayH2').text(`Results: showing ${max} parks for ${state}`);
   $('#listOfParks').empty();
@@ -16,11 +29,17 @@ function displayResults(response,state,max=10) {
     let name = response.data[i].fullName;
     let description = response.data[i].description;
     let url = response.data[i].url;
-    populateItems(name,description,url);
+    populateItems(name,description,url,i+1);
   }
   
 }
-
+/**
+ * Takes all of the data necessary for accessing the API and forms a string from them.
+ * @param {string} stateChoice - the state to gather parks from
+ * @param {number} maxResults - max number of results to display
+ * @param {string} apiKey - my specific API Key
+ * @param {string} url - API GET URL
+ */
 function parseUrl(stateChoice,maxResults,apiKey,url) {
   let fullUrl = `${url}?stateCode=${stateChoice}&limit=${maxResults}&api_key=${apiKey}`;
   return fullUrl;
