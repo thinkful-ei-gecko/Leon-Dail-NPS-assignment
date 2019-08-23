@@ -6,10 +6,11 @@
  * @param {string} description  - description of the park
  * @param {string} url - url of the park's website
  * @param {number} i - the number of park we're currently on
+ * @param {string} state - state code for each individual park
  */
-function populateItems(name, description, url,i) {
+function populateItems(name, description, url,i,state) {
   $('#listOfParks').append(`
-    <h3>#${i}: ${name}</h3>
+    <h3>#${i}: ${name} - ${state}</h3>
     <p>Description: ${description}</p>
     <p>URL: ${url}</p>
   `);
@@ -30,10 +31,11 @@ function displayResults(response,state,max=10) {
     let name = response.data[i].fullName;
     let description = response.data[i].description;
     let url = response.data[i].url;
-    populateItems(name,description,url,i+1);
+    let stateCode = response.data[i].states;
+    populateItems(name,description,url,i+1,stateCode);
   }
-  
 }
+
 /**
  * Takes all of the data necessary for accessing the API and forms a string from them.
  * @param {string} stateChoice - the state to gather parks from
@@ -57,7 +59,6 @@ function searchForParks() {
     let apiKey = 'aiv9e5O0fVFSsMBrxoIPdrMtngcvzpNm4tg9HGLO';
     let url = 'https://developer.nps.gov/api/v1/parks';
     let fullUrl = parseUrl(stateChoice,maxResults,apiKey,url);
-    console.log($('#results h2'));
     fetch(fullUrl)
       .then(response => {
         if (response.ok) { return response.json(); }

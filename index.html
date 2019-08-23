@@ -13,8 +13,10 @@
         <p>Search for parks in a specific state!</p>
         <form id="park-search">
             <section id="state-name">
-                <label for="state-name-input">Enter the state name (2 letter state code only!): </label>
-                <input type="text" placeholder="CA" maxlength="2" id="state-name-input" />
+                <label for="state-name-input">Enter one or more state names (2 letter state code only!): 
+                    <span>You can choose multiple states by separating them with a comma! (e.g. CA,MD )</span>
+                </label>
+                <input type="text" placeholder="CA,MD" id="state-name-input" required="required"/>
             </section>
             <section id="results-amount">
                 <label for="results-amount-input">Enter the maximum number of results you want:</label>
